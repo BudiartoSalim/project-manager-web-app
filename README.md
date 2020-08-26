@@ -1,3 +1,19 @@
+# IMPORTANT
+main branch = development
+clone code dari branch development kalau perlu clone
+
+jangan lupa untuk bikin branch sendiri seperti biasa untuk tugas masing masing -> git checkout -b branchName
+update branch agar dapat update yang sudah di apply ke branch development -> git pull origin development
+
+untuk nge push kerjaan, push sebagai branch masing masing -> git push origin myBranchName
+Untuk membuat fitur/modul/bagian yang telah dipush masuk ke development, buatlah pull request dengan melakukan compare: newbranchname
+Pilih Merge pull request untuk menggabungkan fitur/modul/bagian ke development. Setelah merge, development memiliki fitur/modul/bagian yang tadi dikerjakan di branch
+
+Jika pengerjaan sudah selesai, sudah dimerge ke development semua dan siap untuk dirilis, buatlah pull request dengan melakukan compare: development ke base: master. Setelah itu lakukan Merge pull request
+
+source detail cara managenya:
+https://github.com/julindra/pair-project-101
+
 # project-manager-web-app
 
 Simple project manager web app with CRUD where staff can be assigned to multiple projects, and each project can also have multiple staffs working on it.
