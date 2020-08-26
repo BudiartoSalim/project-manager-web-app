@@ -2,6 +2,14 @@
 main branch = development
 clone code dari branch development kalau perlu clone
 
+TIDAK PERLU NPM INIT
+TIDAK PERLU NPM INSTALL EXPRESS EJS PG DST 
+-> yang perlu cuman: npm install
+TANPA PARAMETER karena module yang diperlukan sudah di record di package.json,
+dia otomatis install semua yang tertulis di package.json
+
+kalau mau test pakai nodemon -> npx nodemon app.js
+
 jangan lupa untuk bikin branch sendiri seperti biasa untuk tugas masing masing -> git checkout -b branchName
 update branch agar dapat update yang sudah di apply ke branch development -> git pull origin development
 
