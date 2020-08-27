@@ -6,14 +6,14 @@
     <title>Document</title>
 </head>
 <body>
-    <h2>Assign Staff to project <% dataProject.name %></h2>
+    <h2>Assign Staff to project <% dataCombined.dataProject.name %></h2>
     <br>
-    <form method="POST" action="/projects/assign-staff/<%= dataProject.id %>">
+    <form method="POST" action="/projects/assign-staff/<%= dataCombined.dataProject.id %>">
         <label>Staffs</label>
-        <select name="staff_name">
+        <select name="staffId">
             <option disabled selected>--chose--</option>
-            <% dataStaff.forEach ((el) => { %>
-            <option value="<%= el.staff_name %>"><%= el.staff_name %></option>
+            <% dataCombined.dataStaff.forEach ((el) => { %>
+            <option value="<%= el.id %>"><%= el.name %></option>
             <% }) %>
         </select>
         <input type='submit' name='assign' value='Assign'>

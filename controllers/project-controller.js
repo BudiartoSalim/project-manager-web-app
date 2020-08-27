@@ -75,19 +75,60 @@ class ProjectController{
         })
     }
 
-    static assignStaffGetHandler(req, res){
-        Staff.findAll({include: Project})
+    static getStaffListHandler(req, res){
+        Project.findOne({where:{id:req.params.projectId},
+            include: [{model: Staff}]})
         .then(data=>{
-            //console.log(data.toJSON())
+            res.redirect('/projects');
         })
         .catch(err=>{
+            res.send(err);
+        })
+    }
 
+    static assignStaffGetHandler(req, res){
+        let dataStaff;
+        Staff.findAll({order: ['id']})
+        .then((data) => {
+            dataStaff = data;
+            return Project.findByPk(req.params.projectId, {include: Staff})
+        })
+        .then((dataProject)=>{
+            dataStaff = dataStaff.filter((elem)=>{
+                let isSame = false;
+                for (let i = 0; i < dataProject.Staffs.length; i++){
+                    if (dataProject.Staffs[i].id === elem.id){
+                        isSame = true;
+                    }
+                }
+                if (isSame === false){
+                    return elem;
+                }
+            })
+            let dataCombined = {
+                dataProject: dataProject,
+                dataStaff: dataStaff
+            }
+            res.render('assign-staff', {dataCombined: dataCombined});
+        })
+        .catch((err) => {
+            res.send(err)
         })
     }
 
     static assignStaffPostHandler(req, res){
-
+        let staff_id = Number(req.body.staffId)
+        ProjectStaff.create({
+            StaffId: staff_id,
+            ProjectId: req.params.projectId
+        })
+        .then(dat=>{
+            res.redirect('/projects')
+        })
+        .catch(err=>{
+            res.send(err)
+        })
     }
-}
+} 
 
 module.exports = ProjectController;
