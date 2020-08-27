@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Assign Staff to project <% dataProject.name %></h2>
+    <br>
+    <form method="POST" action="/projects/assign-staff/<%= dataProject.id %>">
+        <label>Staffs</label>
+        <select name="staff_name">
+            <option disabled selected>--chose--</option>
+            <% dataStaff.forEach ((el) => { %>
+            <option value="<%= el.staff_name %>"><%= el.staff_name %></option>
+            <% }) %>
+        </select>
+        <input type='submit' name='assign' value='Assign'>
+    </form>
+</body>
+</html>

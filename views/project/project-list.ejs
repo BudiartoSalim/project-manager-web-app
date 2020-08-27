@@ -18,12 +18,12 @@
             <th>Priority</th>
             <th>Action</th>
         </tr>
-        <% dataStaff.map((el) => { %>
+        <% dataProject.map((el) => { %>
             <tr>
                 <td><%= el.name %></td>
                 <td><%= el.status %></td>
                 <td><%= el.priority %></td>
-                <td><a href="/projects/edit/<%= el.id %>">Edit</a> | <a href="/projects/delete/<%= el.id %>">Delete</a></td>
+                <td><a href="/projects/edit/<%= el.id %>">Edit</a> | <a href="/projects/delete/<%= el.id %>">Delete</a> | <a href="/projects/assign-staff/<%= el.id %>">Assign</a></td>
             </tr>
         <% }) %>
     </table>
