@@ -15,6 +15,21 @@ class DiscordBot{
         hook.send(`<@${discordId}> just got assigned to work on project: ${projectName}`);
     }
 
+    static sendProjectAssignedTo(discordId, first_name, last_name, project_name){
+        let msg = "";
+        if (discordId){
+            msg+=`<@${discordId}> `;
+        }
+        if (last_name.length < 1){
+            last_name = "";
+        }
+        if (first_name.length < 1){
+            first_name = "";
+        }
+        msg+= `Project ${project_name} just got assigned to ${first_name} ${last_name}`
+        hook.send(msg);
+    }
+
     static sendProjectUpdateToName(staffname, projectName){
         hook.send(`${staffname} just got assigned to work on project: ${projectName}`);
     }
