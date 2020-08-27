@@ -42,6 +42,7 @@ class DiscordBot{
         hook.send(message)
     }
 
+    
 }
 
 module.exports = DiscordBot;
