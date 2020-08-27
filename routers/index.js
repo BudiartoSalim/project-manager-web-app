@@ -40,7 +40,7 @@ router.post('/login',(req,res) => {
     })
     .then(data => {
         if(data === null){
-            req.redirect('/login?err=true');
+            res.redirect('/login?err=true');
         }
         else{
             req.session.isLoggedIn = true;
