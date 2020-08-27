@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Status</title>
+</head>
+<body>
+    <h1><%=data.name%></h1>
+    <h4>Status: <%if(data.isCompleted){%>Finished<%} else {%>In Progress<%}%><br>
+    Priority: <%=data.priority%></h4>
+    <table border="1px">
+        <tr>
+            <th>Staffs Assigned on this Project</th>
+            <th>Position</th>
+        </tr>
+        <% data.Staffs.forEach((elem)=>{ %>
+            <tr>
+                <td><%=elem.first_name%> <%=elem.last_name%></td>
+                <td><%=elem.position%></td>
+            </tr>
+        <%}) %>
+    </table>
+</body>
+</html>
