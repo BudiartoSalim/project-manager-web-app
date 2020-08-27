@@ -48,7 +48,7 @@ class StaffController{
     static editStaffPostHandler(req, res){
         Staff.update({
             first_name: req.body.first_name,
-            last_name: req.body.last,
+            last_name: req.body.last_name,
             position: req.body.position,
             email: req.body.email
         },{where: {id: req.params.staffId}})
