@@ -6,7 +6,7 @@ class ProjectController{
     static showProjectListGetHandler(req, res){
         Project.findAll()
         .then(dataProject=>{
-           // res.render('viewName', {dataProject: dataProject})
+            res.render('project-list', {dataProject: dataProject})
         })
         .catch(err=>{
             res.send(err)
@@ -14,13 +14,13 @@ class ProjectController{
     }
 
     static addProjectGetHandler(req, res){
-        res.send('ini nanti halaman input buat add')
+        res.render('add-project')
     //    rest.render('add-project', {})
     }
 
     static addProjectPostHandler(req, res){
         Project.create({
-            name: req.body.name,
+            name: req.body.project_name,
             priority: req.body.priority,
             isCompleted: false
         })
@@ -37,8 +37,7 @@ class ProjectController{
 
         Project.findByPk(req.params.projectId, {})
         .then(data=>{
-            console.log(data.toJSON())
-            res.redirect('/projects')
+            res.render('project-edit', {data:data})
         })
         .catch(err=>{
             res.send(err)
@@ -46,11 +45,18 @@ class ProjectController{
     }
 
     static editProjectPostHandler(req, res){
+        let dataInput = req.body;
+        if (dataInput.status){
+            dataInput.isCompleted = true;
+        } else {
+            dataInput.isCompleted = false;
+        }
+
         Project.update({
-            name: req.body.name,
-            priority: req.body.priority,
-            isCompleted: req.body.isCompleted
-        })
+        name: dataInput.name,
+        priority: dataInput.priority,
+        isCompleted: dataInput.isCompleted
+        }, {where: {id: req.params.projectId}})
         .then(data=>{
             res.redirect('/projects');
         })
@@ -61,6 +67,26 @@ class ProjectController{
 
     static deleteProjectGetHandler(req, res){
         Project.destroy({where:{id: req.params.projectId}})
+        .then(dat=>{
+            res.redirect('/projects');
+        })
+        .catch(err=>{
+            res.send(err);
+        })
+    }
+
+    static assignStaffGetHandler(req, res){
+        Staff.findAll({include: Project})
+        .then(data=>{
+            //console.log(data.toJSON())
+        })
+        .catch(err=>{
+
+        })
+    }
+
+    static assignStaffPostHandler(req, res){
+
     }
 }
 
