@@ -61,7 +61,7 @@ class StaffController{
     }
 
     static deleteStaffGetHandler(req, res){
-        Movie.destroy({
+        Staff.destroy({
             where: {id: req.params.staffId}
           })
           .then(data=>{
