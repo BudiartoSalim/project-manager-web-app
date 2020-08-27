@@ -5,6 +5,9 @@ class ProjectStaffController{
         Project.findByPk(req.params.projectId, {include: Staff}) 
         .then(data=>{
             res.render("project-status", {data: data})
+        })
+        .catch(err=>{
+            res.send(err)
         })       
     }
 
@@ -12,6 +15,9 @@ class ProjectStaffController{
         Staff.findByPk(req.params.staffId, {include: Project}) 
         .then(data=>{
             res.render("staff-status", {data: data})
+        })
+        .catch(err=>{
+            res.send(err)
         })
     }
 }
