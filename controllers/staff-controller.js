@@ -2,7 +2,7 @@ const { Project, Staff, ProjectStaff} = require('../models/index.js')
 
 class StaffController{
     static showStaffListGetHandler(req, res){
-        Staff.findAll({})
+        Staff.findAll({order: ['id']})
         .then((dataStaff) => {
             res.render('staff-list', {dataStaff});
         })
@@ -16,7 +16,12 @@ class StaffController{
     }
 
     static addStaffPostHandler(req, res){
-        let dataBody = req.body
+        let dataBody = {
+            first_name: req.body.first_name,
+            last_name: req.body.last,
+            position: req.body.position,
+            email: req.body.email
+        }
         Staff.create(dataBody)
         .then(dataBody => {
             res.redirect('/staffs')
@@ -33,7 +38,7 @@ class StaffController{
             }
         })
         .then ( (data) => {
-            res.render('edit-staff',{ data });
+            res.render('staff-edit',{ data });
         })
         .catch( (err) => {
             res.send(err)
@@ -43,7 +48,7 @@ class StaffController{
     static editStaffPostHandler(req, res){
         Staff.update({
             first_name: req.body.first_name,
-            last_name: req.body.last_name,
+            last_name: req.body.last,
             position: req.body.position,
             email: req.body.email
         },{where: {id: req.params.staffId}})

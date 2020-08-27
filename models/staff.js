@@ -24,5 +24,18 @@ module.exports = (sequelize, DataTypes) => {
     sequelize,
     modelName: 'Staff',
   });
+
+  Staff.addHook('afterFind', (data, options)=>{
+    if (Array.isArray(data)){
+      data.forEach(elem=>{
+        elem.name = `${elem.first_name} ${elem.last_name}`
+      })
+    } 
+    else {
+      data.name = `${data.first_name} ${data.last_name}`
+    }
+
+  })
+
   return Staff;
 };
