@@ -4,12 +4,7 @@ const ProjectRouter = require('./project-router.js');
 const StaffRouter = require('./staff-router.js');
 const { Project, Staff, ProjectStaff,Admin} = require('../models')
 
-// const harusLogin = (req,res,next) => {
-//     res.redirect('/login');
-//     next();
-// }
-
-router.get('/', (req, res)=>{
+const harusLogin = (req,res,next) => {
     if(req.session.isLoggedIn === true){
         res.render('home-session',{
             username: req.session.username
@@ -17,6 +12,11 @@ router.get('/', (req, res)=>{
     }else{
         res.redirect('/login');
     }
+    next ()
+}
+
+router.get('/',harusLogin, (req, res)=>{
+    res.render('home')
 })
 router.get('/login', (req,res) => {
     if(req.query.err){
