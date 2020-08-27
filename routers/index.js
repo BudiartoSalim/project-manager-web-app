@@ -12,6 +12,7 @@ const harusLogin = (req,res,next) => {
     }else{
         res.redirect('/login');
     }
+    next ()
 }
 
 router.get('/',harusLogin, (req, res)=>{
