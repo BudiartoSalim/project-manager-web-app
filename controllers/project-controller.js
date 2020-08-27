@@ -4,7 +4,7 @@ const DiscordBot = require('../discord-integration/discord.js');
 class ProjectController{
 
     static showProjectListGetHandler(req, res){
-        Project.findAll()
+        Project.findAll({order: ['id']})
         .then(dataProject=>{
             res.render('project-list', {dataProject: dataProject})
         })
