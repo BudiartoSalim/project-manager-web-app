@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Staffs</title>
+    <title>Projects</title>
 </head>
 <body>
     <%- include('partial/header.ejs') %>
-    <h2>List of Staff</h2>
+    <h2>List of Project</h2>
     <br>
     <a href='/projects/add' >Add Project</a>
     <br>
@@ -18,10 +18,10 @@
             <th>Priority</th>
             <th>Action</th>
         </tr>
-        <% dataStaff.map((el) => { %>
+        <% dataProject.map((el) => { %>
             <tr>
                 <td><%= el.name %></td>
-                <td><%= el.status %></td>
+                <td><%= el.isCompleted %></td>
                 <td><%= el.priority %></td>
                 <td><a href="/projects/edit/<%= el.id %>">Edit</a> | <a href="/projects/delete/<%= el.id %>">Delete</a></td>
             </tr>

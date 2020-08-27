@@ -6,12 +6,12 @@
     <title>Edit Staff</title>
 </head>
 <body>
-    <form method="POST">
+    <form method="POST" action="/staffs/edit">
         First Name: <br><input type="text" name="first_name" value="<%= data.first_name %>"><br>
-        Last Name: <br><input type="text" name="last" value="<%= data.last_name %>"><br>
+        Last Name: <br><input type="text" name="last_name" value="<%= data.last_name %>"><br>
         Position: <br><input type="text" name="position" value="<%= data.position %>"><br>
         Email: <br><input type="text" name="email" value="<%= data.email %>"><br>
-        <input type='submit' name='add' value='Update Staff'>
+        <input type='submit' name='edit' value='Update Staff'>
     </form>
 </body>
 </html>
