@@ -123,6 +123,17 @@ class ProjectController{
             ProjectId: req.params.projectId
         })
         .then(dat=>{
+            return Staff.findByPk(dat.StaffId, {include: Project})
+        })
+        .then(data=>{
+            let projectName;
+            for (let i = 0; i < data.Projects.length; i++){
+                if (data.Projects[i].id === Number(req.params.projectId)){
+                    projectName = data.Projects[i].name;
+                    break;
+                }
+            }
+            DiscordBot.sendProjectAssignedTo(data.discordId, data.first_name, data.last_name, projectName)
             res.redirect('/projects')
         })
         .catch(err=>{
