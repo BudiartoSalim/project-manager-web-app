@@ -1,3 +1,34 @@
+# Planned tables:
+Staffs: name, position, email, discordId (boleh null)
+Projects: name, Status, priority
+ProjectStaffs:  staffId, projectId
+
+Project: poll-db status complete
+
+harus pakai apa aja:
+middleware?
+helper function
+Hook? 
+Session simple login page aja di home ('/')
+
+# Planned views:
+Staff List
+Add Staff
+Edit Staff
+
+Project List
+Add Project
+Edit Project
+
+assign staff to project
+
+project/:projectId/assignStaff -> select option nunjukkin staff yang ada dan belum dimasukkan ke project tsb.
+
+Staff/on-project/:projectId -> shows projects this staff has worked on
+Staff/on-project/:projectId/finished -> shows projects this staff has worked on that has finished
+Staff/on-project/:projectId/ongoing -> shows projects this staff has that are not finished
+
+
 # IMPORTANT
 main branch = development
 clone code dari branch development kalau perlu clone
