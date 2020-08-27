@@ -7,6 +7,13 @@ class ProjectStaffController{
             res.render("project-status", {data: data})
         })       
     }
+
+    static showStaffProjectsGetHandler(req, res){
+        Staff.findByPk(req.params.staffId, {include: Project}) 
+        .then(data=>{
+            res.render("staff-status", {data: data})
+        })
+    }
 }
 
 module.exports = ProjectStaffController

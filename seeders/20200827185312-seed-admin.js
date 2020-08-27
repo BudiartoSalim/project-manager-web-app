@@ -13,7 +13,9 @@ module.exports = {
     */
    let data = [{
      admin_username: 'admin01',
-     password: '12345'
+     password: '12345',
+     createdAt: new Date(),
+     updatedAt: new Date()
    }]
    return queryInterface.bulkInsert('Admins',data,{});
   },
