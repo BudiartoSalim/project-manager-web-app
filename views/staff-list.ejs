@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Staffs</title>
+</head>
+<body>
+    <%- include('partial/header.ejs') %>
+    <h2>List of Staff</h2>
+    <br>
+    <table border=1>
+        <tr>
+            <th>Name</th>
+            <th>Position</th>
+            <th>Email</th>
+        </tr>
+        <% dataStaff.map((el) => { %>
+            <tr>
+                <td><%= el.name %></td>
+                <td><%= el.position %></td>
+                <td><%= el.email %></td>
+            </tr>
+        <% }) %>
+    </table>
+</body>
+</html>
