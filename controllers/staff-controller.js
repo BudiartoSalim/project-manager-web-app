@@ -1,4 +1,5 @@
-const { Project, Staff, ProjectStaff} = require('../models/index.js')
+const { Project, Staff, ProjectStaff} = require('../models/index.js');
+const DiscordBot = require('../discord-integration/discord.js');
 
 class StaffController{
     static showStaffListGetHandler(req, res){
@@ -23,7 +24,8 @@ class StaffController{
             email: req.body.email
         }
         Staff.create(dataBody)
-        .then(dataBody => {
+        .then(data => {
+            DiscordBot.sendNewStaffAdded(data)
             res.redirect('/staffs')
         })
         .catch(err => {

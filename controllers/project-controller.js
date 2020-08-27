@@ -25,6 +25,7 @@ class ProjectController{
             isCompleted: false
         })
         .then(data=>{
+            DiscordBot.sendNewProjectCreated(data)
             res.redirect('/projects');
         })
         .catch(err=>{
@@ -33,8 +34,6 @@ class ProjectController{
     }
 
     static editProjectGetHandler(req, res){
-        //belum dites, perlu views edit 
-
         Project.findByPk(req.params.projectId, {})
         .then(data=>{
             res.render('project-edit', {data:data})
@@ -51,13 +50,15 @@ class ProjectController{
         } else {
             dataInput.isCompleted = false;
         }
-
+        dataInput.id = req.params.projectId;
+        
         Project.update({
         name: dataInput.name,
         priority: dataInput.priority,
         isCompleted: dataInput.isCompleted
         }, {where: {id: req.params.projectId}})
         .then(data=>{
+            DiscordBot.sendProjectUpdateMessage(dataInput);
             res.redirect('/projects');
         })
         .catch(err=>{
