@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="style.css" rel="stylesheet" />
     <title>Projects</title>
 </head>
 <body>
@@ -13,6 +14,7 @@
     <br>
     <table border=1>
         <tr>
+            <th>Project ID</th>
             <th>Name</th>
             <th>Status</th>
             <th>Priority</th>
@@ -20,12 +22,18 @@
         </tr>
         <% dataProject.map((el) => { %>
             <tr>
+                <td><%= el.id %></td>
                 <td><%= el.name %></td>
-                <td><%= el.isCompleted %></td>
+                <% if (el.isCompleted) {%>
+                    <td>Complete</td>
+                <% }else { %>
+                    <td> In Progress</td> 
+                    <% } %>
                 <td><%= el.priority %></td>
-                <td><a href="/projects/edit/<%= el.id %>">Edit</a> | <a href="/projects/delete/<%= el.id %>">Delete</a></td>
+                <td><a href="/projects/edit/<%= el.id %>">Edit</a> | <a href="/projects/delete/<%= el.id %>">Delete</a></td> | <a href="/projects/status/<%= el.id %>">Status</a></td>
             </tr>
         <% }) %>
     </table>
 </body>
+<%- include('partial/footer.ejs') %>
 </html>
