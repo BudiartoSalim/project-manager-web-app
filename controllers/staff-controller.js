@@ -50,7 +50,8 @@ class StaffController{
             first_name: req.body.first_name,
             last_name: req.body.last_name,
             position: req.body.position,
-            email: req.body.email
+            email: req.body.email,
+            discordId: req.body.discordId
         },{where: {id: req.params.staffId}})
         .then(data => {
             res.redirect('/staffs')
