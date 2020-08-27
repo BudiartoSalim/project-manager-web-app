@@ -1,4 +1,5 @@
-const { Project, Staff, ProjectStaff} = require('../models/index.js')
+const { Project, Staff, ProjectStaff} = require('../models/index.js');
+const DiscordBot = require('../discord-integration/discord.js');
 
 class ProjectController{
 
@@ -14,7 +15,7 @@ class ProjectController{
 
     static addProjectGetHandler(req, res){
         res.send('ini nanti halaman input buat add')
-        rest.render('add-project', {})
+    //    rest.render('add-project', {})
     }
 
     static addProjectPostHandler(req, res){
@@ -34,11 +35,14 @@ class ProjectController{
     static editProjectGetHandler(req, res){
         //belum dites, perlu views edit 
 
-/*         Project.findByPk(req.params.projectId, {})
+        Project.findByPk(req.params.projectId, {})
         .then(data=>{
             console.log(data.toJSON())
             res.redirect('/projects')
-        }) */
+        })
+        .catch(err=>{
+            res.send(err)
+        })
     }
 
     static editProjectPostHandler(req, res){
@@ -56,7 +60,7 @@ class ProjectController{
     }
 
     static deleteProjectGetHandler(req, res){
-
+        Project.destroy({where:{id: req.params.projectId}})
     }
 }
 
