@@ -4,7 +4,7 @@ const ProjectRouter = require('./project-router.js');
 const StaffRouter = require('./staff-router.js');
 
 router.get('/', (req, res)=>{
-    res.send(`ini homepage`);
+    res.render(`home`);
 })
 router.use('/projects', ProjectRouter);
 router.use('/staffs', StaffRouter);
