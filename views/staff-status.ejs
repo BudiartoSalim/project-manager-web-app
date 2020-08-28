@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="style.css" rel="stylesheet" />
+    <title>Staff Status</title>
+</head>
+<body>
+    <%- include('partial/header.ejs') %>
+    <h1><%=data.name%></h1>
+    <h4>Position: <%=data.position%></h4>
+    <table border="1px">
+        <tr>
+            <th>Projects assigned to <%=data.name%></th>
+            <th>Project Status</th>
+        </tr>
+        <% data.Projects.forEach((elem)=>{ %>
+            <tr>
+                <td><%=elem.name%></td>
+                <td><%if (elem.isCompleted){%>Finished<%} else {%>In Progress <%}%></td>
+            </tr>
+        <%}) %>
+    </table>
+</body>
+<%- include('partial/footer.ejs') %>
+</html>

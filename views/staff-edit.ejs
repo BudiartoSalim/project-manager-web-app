@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Staff</title>
+
+    <link href="style.css" rel="stylesheet" />
+</head>
+<body>
+    <form method="POST">
+        First Name: <br><input type="text" name="first_name" value="<%= data.first_name %>"><br>
+        Last Name: <br><input type="text" name="last_name" value="<%= data.last_name %>"><br>
+        Position: <br><input type="text" name="position" value="<%= data.position %>"><br>
+        Email: <br><input type="text" name="email" value="<%= data.email %>"><br><br>
+        Discord ID: <input type="text" name="discordId" value="<%= data.discordId %>"><br><br>
+        <input type='submit' name='edit' value='Update Staff'>
+    </form>
+</body>
+<%- include('partial/footer.ejs') %>
+</html>
