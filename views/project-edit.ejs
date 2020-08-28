@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="style.css" rel="stylesheet" />
+    <title>Edit Staff</title>
+</head>
+<body>
+    <form method="POST">
+        Name: <br><input type="text" name="name" value="<%= data.name %>"><br>
+        Priority: <br><select name="priority">
+                <option value="high" <% if(data.priority == "high"){ %> selected <% } %>>high</option>
+                <option value="medium" <% if(data.priority == "medium"){ %> selected <%}%>>medium</option>
+                <option value="low" <% if(data.priority == "low"){ %> selected <%}%> >low</option>
+        </select><br>
+        <br><input type="checkbox" name="status" value="true" <% if(data.isCompleted === true){ %> checked <%}%>>Completed<br><br>
+        <input type='submit' name='edit' value='Update Project'>
+    </form>
+</body>
+<%- include('partial/footer.ejs') %>
+</html>

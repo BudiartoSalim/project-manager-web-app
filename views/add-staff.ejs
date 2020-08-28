@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="style.css" rel="stylesheet" />
+    <title>Add Staff</title>
+</head>
+<body>
+    <form method="POST" action="/staffs/add">
+        First Name: <br><input type="text" name="first_name" value=""><br>
+        Last Name: <br><input type="text" name="last" value=""><br>
+        Position: <br><input type="text" name="position" value=""><br>
+        Email: <br><input type="text" name="email" value=""><br>
+        <input type='submit' name='add' value='Add Staff'>
+    </form>
+</body>
+<%- include('partial/footer.ejs') %>
+</html>
