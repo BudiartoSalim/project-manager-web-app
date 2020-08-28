@@ -4,10 +4,17 @@ const config = require('../config/discord-webhook-config.json');
 const hook = new Discord.WebhookClient(config.webhook_id, config.webhook_token);
 
 //cara tag: <@discordid>
+//untuk dapat discordId: setting discord applicationmu ke developer mode, klik kanan user bisa copy ID
+
+//untuk setting channel dari server mana bot akan mengirim pesan:
+//server settings -> integrations -> webhook
+//biasanya perlu administration atau webhooks permission role baru bisa generate webhook token
+//webhooknya nanti berupa link yang terdiri dari 2 bagian dipisah / yaitu webhookid dan webhooktoken
+//masukkan webhookid dan webhooktoken di config/discord-webhook-config.json
+
 class DiscordBot{
     static sendMessage(messageStr){
         hook.send(messageStr);
-        //console.log(`<@180714078338023425>`)
        // hook.send(`ini dikirim dari ${messageStr}`);
     }
 
